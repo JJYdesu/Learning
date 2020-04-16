@@ -26,9 +26,10 @@ app.post('/acceptimg',(req,res)=>{
 	var imgData = req.body.src
 	var base64Data = imgData.replace(/^data:image\/\w+;base64,/,"")
 	var dataBuffer = new Buffer.from(base64Data,'base64')
-	fs.writeFile('/assets/img.png',dataBuffer,err=>{
+	fs.writeFile('./assets/test.png',dataBuffer,err=>{
 		if(err){
-			console.log('失败！')
+			console.log('失败')
+			console.log(err)
 			res.send('保存失败')
 		}else{
 			console.log('成功')
