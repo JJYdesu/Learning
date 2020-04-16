@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<button onclick="bubbleSort()">冒泡排序</button>
+    <button onclick="selectSort()">选择排序</button>
+    <button onclick="insertSort()">插入排序</button>
+		<script>
+			function Sort() {
+				//1.冒泡排序
+				this.bubbleSort = (arr) => {
+					let len = arr.length
+					for (let i = 0; i < len; i++) {
+						for (let j = 0; j < len - 1 - i; j++) {
+							if (arr[j] > arr[j + 1]) {
+								let temp = arr[j + 1]
+								arr[j + 1] = arr[j]
+								arr[j] = temp
+							}
+						}
+						console.log('第' + i + '步:' + arr)
+					}
+					return arr
+				}
+				//2.选择排序
+				this.selectSort = (arr) => {
+					let len = arr.length,
+						minID,
+						temp
+					for (let i = 0; i < len - 1; i++) {
+						minID = i
+						for (let j = i + 1; j < len; j++) {
+							if (arr[j] < arr[minID]) {
+								minID = j
+							}
+						}
+						temp = arr[i]
+						arr[i] = arr[minID]
+						arr[minID] = temp
+						console.log('第' + i + '步:' + arr)
+					}
+					return arr
+				}
+				//3.插入排序
+				this.insertSort = (arr) => {
+					let len = arr.length,
+						temp
+					for (let i = 0; i < len - 1; i++) {
+						let j = i + 1
+            let target = arr[j]
+						for (let m = j-1; m >= 0; m--) {
+							if (target < arr[m]) {
+								temp = arr[m]
+								arr[m] = arr[m+1]
+								arr[m+1] = temp
+							}
+						}
+            console.log('第' + i + '步:' + arr)
+					}
+          return arr
+				}
+			}
+			//测试代码
+			let sort = new Sort()
+			let arr = [5, 6, 2, 3, 7, 1, 4]
+			function bubbleSort() {
+				console.log('结果：' + sort.bubbleSort(arr))
+			}
+			function selectSort() {
+				console.log('结果：' + sort.selectSort(arr))
+			}
+      function insertSort(){
+        console.log(sort.insertSort(arr))
+      }
+		</script>
+	</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<button onclick="addData()">添加数据</button>
+		<button onclick="insertData()">插入节点</button>
+		<button onclick="searchData()">查找节点</button>
+		<button onclick="removeAt()">移除节点（指定位置）</button>
+		<button onclick="remove()">移除节点（指定数值）</button>
+		<script>
+			//封装单项链表结构
+			function linkedList() {
+				let Node = function (el) {
+					this.el = el
+					this.next = null
+				}
+				let length = 0
+				let head = null
+				//1.链表尾部添加元素
+				this.append = (el) => {
+					let node = new Node(el),
+						current
+					if (!head) {
+						head = node
+					} else {
+						current = head
+						while (current.next) {
+							current = current.next
+						}
+						current.next = node
+					}
+					length++
+				}
+				//2.插入节点
+				this.insert = (pos, el) => {
+					if (pos >= 0 && pos <= length) {
+						let node = new Node(el),
+							preNode = null,
+							current = head,
+							currentID = 0
+						if (pos == 0) {
+							node.next = current
+							head = node
+						} else {
+							while (currentID++ < pos) {
+								preNode = current
+								current = current.next
+							}
+							node.next = current
+							preNode.next = node
+							length++
+							return true
+						}
+					} else {
+						return false
+					}
+				}
+				//3.根据节点值查询位置
+				this.indexOf = (el) => {
+					let currentID = 0,
+						current = head,
+						idArray = []
+					while (currentID < length) {
+						if (current.el == el) {
+							idArray.push(currentID)
+						}
+						current = current.next
+						currentID++
+					}
+					if (idArray.length == 0) {
+						return '节点不存在'
+					} else {
+						return idArray
+					}
+				}
+				//4.移除指定位置的节点
+				this.removeAt = (pos) => {
+					let currentID = 0,
+						current = head,
+						pre
+					if (pos > length || pos < 0) {
+						return '请输入合适的位置'
+					} else if (pos == 0) {
+						head = current.next
+					} else {
+						while (currentID != pos) {
+							pre = current
+							current = current.next
+							currentID++
+						}
+						pre.next = current.next
+					}
+					length--
+					return current.el
+				}
+				//5.移除指定数值的节点
+				this.remove = (el) => {
+					let currentID = 0
+          let removeID = this.indexOf(el)
+					while(removeID != 0){
+            this.removeAt(removeID.pop())
+          }  
+				}
+				//打印
+				this.toArray = () => {
+					let current = head,
+						results = []
+					while (current) {
+						results.push(current.el)
+						current = current.next
+					}
+					return results
+				}
+			}
+			//测试代码
+			let link = new linkedList()
+			function addData() {
+				link.append(1)
+				link.append(5)
+				link.append(6)
+				link.append(8)
+				link.append(2)
+				link.append(8)
+				link.append(4)
+				console.log(link.toArray())
+			}
+			function insertData() {
+				link.insert(3, 11)
+				console.log(link.toArray())
+			}
+			function searchData() {
+				console.log(link.indexOf(8))
+			}
+			function removeAt() {
+				console.log(link.removeAt(3))
+				console.log(link.toArray())
+			}
+			function remove() {
+				link.remove(6)
+				console.log(link.toArray())
+			}
+		</script>
+	</body>
+</html>

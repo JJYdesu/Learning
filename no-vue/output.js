@@ -1,0 +1,1 @@
+obj = {"name":"JJY","age":18}
