@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue.min.js"></script>
+</head>
+<body>
+  <div id="app"> 
+    <h2 v-bind:style="{color:colorObj.red}">直接绑定绑定样式属性</h2>
+    <div :class='{classA:is}'>绑定class中判断</div>
+    <div :class='[classB,size]'>通过数组绑定多个样式属性</div>
+    <div :class='is?classA:classB'>也可以使用三元表达式</div>
+  </div>
+  <style>
+    .classA{
+      color: green;
+      font-size: 24px;
+    }
+    .classB{
+      color: yellow;
+    }
+    .size{
+      font-size: 36px;
+    }
+  </style>
+  <script type="text/javascript">
+    var vm = new Vue({
+      el:'#app',
+      data:{
+        colorObj:{
+          red:'red',
+          green:'green'
+        },
+        is:true,
+        classA:'classA',
+        classB:'classB',
+        size:'size'
+      }
+    })
+  </script>
+</body>
+</html>

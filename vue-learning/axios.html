@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./vue.min.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<button @click="test">发送请求</button>
+		</div>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {},
+				methods: {
+					test() {
+						var config = {
+							method: 'post',
+							url: 'http://localhost:3038/post',
+							data: {
+								name: 'JJY',
+								age: 22,
+								country: '中国',
+							},
+						}
+						axios(config)
+							.then((res) => {
+								console.log(res)
+							})
+							.catch((err) => {
+								console.log(err)
+							})
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

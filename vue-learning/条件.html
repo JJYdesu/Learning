@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue.min.js"></script>
+</head>
+<body>
+  <div id='app'>
+    <h2 v-if="type==='A'">此时type的值为A</h2>
+    <h2 v-else-if="type==='B'">此时type的值为B</h2>
+    <h2 v-else-if="type==='C'">此时type的值为C</h2>
+  </div>
+  <script>
+    var vm = new Vue({
+      el:'#app',
+      data:{
+        type:'B'
+      }
+    })
+  </script>
+</body>
+</html>

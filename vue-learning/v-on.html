@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue.min.js"></script>
+</head>
+<body>
+  <div id='app'>
+    <button v-on:click='test'>点我打印</button>
+    <button @click='test2'>语法糖写法</button>
+  </div>
+  <script>
+    var vm = new Vue({
+      el:'#app',
+      data:{
+      },
+      methods:{
+        test(){
+          console.log('这里是v-on：click')
+        },
+        test2(){
+          console.log('这里是@click')
+        }
+      }
+    })
+  </script>
+</body>
+</html>

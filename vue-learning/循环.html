@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue.min.js"></script>
+</head>
+<body>
+  <div id='app'>
+    <ul>
+      <li v-for='item in obj'>
+        <h2>{{item}}</h2>
+      </li>
+      <li v-for='n in 5'>
+        这是第{{n}}个数
+      </li>
+    </ul>
+  </div>
+  <script>
+    var vm = new Vue({
+      el:'#app',
+      data:{
+        obj:{
+          name:'Jacky',
+          age:22,
+          city:'广州'
+        }
+      }
+    })
+  </script>
+</body>
+</html>

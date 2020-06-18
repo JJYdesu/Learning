@@ -22,7 +22,6 @@ app.post('/testpost', (req, res) => {
 	console.log(JSON.stringify(req.body));
 })
 app.post('/acceptimg',(req,res)=>{
-	//console.log(JSON.stringify(req.body))
 	var imgData = req.body.src
 	var base64Data = imgData.replace(/^data:image\/\w+;base64,/,"")
 	var dataBuffer = new Buffer.from(base64Data,'base64')
