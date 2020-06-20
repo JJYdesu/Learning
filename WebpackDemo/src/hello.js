@@ -1,5 +1,5 @@
 // hello.js
-module.exports = function() {
+module.exports = ()=> {
     let hello = document.createElement('div');
     hello.innerHTML = "Hello Webpack";
     return hello;
